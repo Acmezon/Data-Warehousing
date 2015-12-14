@@ -130,7 +130,7 @@
            </partitioning>
     <connection>RecommenderDB</connection>
     <sql>SELECT id_item, movie_title, imdb_url FROM Films</sql>
-    <limit>0</limit>
+    <limit>30</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
@@ -749,15 +749,15 @@
         <CopyNr>0</CopyNr>
         </step>
       <step>
-        <name>Guardar Generos</name>
-        <CopyNr>0</CopyNr>
-        </step>
-      <step>
         <name>GuardarPelicula</name>
         <CopyNr>0</CopyNr>
         </step>
       <step>
         <name>GuardarActores</name>
+        <CopyNr>0</CopyNr>
+        </step>
+      <step>
+        <name>GuardarGeneros</name>
         <CopyNr>0</CopyNr>
         </step>
       </steps>
