@@ -104,16 +104,17 @@
   <order>
   <hop> <from>REST Client</from><to>Json Input</to><enabled>Y</enabled> </hop>
   <hop> <from>Valor Java Script Modificado</from><to>REST Client</to><enabled>Y</enabled> </hop>
-  <hop> <from>TomarPeliculas</from><to>Valor Java Script Modificado</to><enabled>N</enabled> </hop>
-  <hop> <from>TomarPeliculas</from><to>GenerosPelicula</to><enabled>N</enabled> </hop>
-  <hop> <from>GenerosPelicula</from><to>Guardar Tabla de hechos</to><enabled>Y</enabled> </hop>
-  <hop> <from>TomarPeliculas</from><to>RatingsPelicula</to><enabled>Y</enabled> </hop>
+  <hop> <from>TomarPeliculas</from><to>Valor Java Script Modificado</to><enabled>Y</enabled> </hop>
+  <hop> <from>TomarPeliculas</from><to>GenerosPelicula</to><enabled>Y</enabled> </hop>
+  <hop> <from>TomarPeliculas</from><to>RatingsPelicula</to><enabled>N</enabled> </hop>
   <hop> <from>RatingsPelicula</from><to>Guardar Valoraciones</to><enabled>Y</enabled> </hop>
-  <hop> <from>Json Input</from><to>Block this step until steps finish</to><enabled>Y</enabled> </hop>
-  <hop> <from>Block this step until steps finish</from><to>Guardar Tabla de hechos</to><enabled>Y</enabled> </hop>
-  <hop> <from>Block this step until steps finish 2</from><to>Guardar Generos</to><enabled>Y</enabled> </hop>
-  <hop> <from>GenerosPelicula</from><to>Block this step until steps finish 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>TomarPeliculas</from><to>GuardarPelicula</to><enabled>Y</enabled> </hop>
+  <hop> <from>Json Input</from><to>EsperarActores</to><enabled>Y</enabled> </hop>
+  <hop> <from>EsperarActores</from><to>Guardar Tabla de hechos</to><enabled>Y</enabled> </hop>
+  <hop> <from>EsperarGeneros</from><to>Guardar Generos</to><enabled>Y</enabled> </hop>
+  <hop> <from>GenerosPelicula</from><to>EsperarGeneros</to><enabled>N</enabled> </hop>
+  <hop> <from>TomarPeliculas</from><to>GuardarPelicula</to><enabled>N</enabled> </hop>
+  <hop> <from>GenerosPelicula</from><to>EsperarGeneros 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>EsperarGeneros 2</from><to>Guardar Tabla de hechos</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>TomarPeliculas</name>
@@ -644,7 +645,7 @@
     </step>
 
   <step>
-    <name>Block this step until steps finish</name>
+    <name>EsperarActores</name>
     <type>BlockUntilStepsFinish</type>
     <description/>
     <distribute>Y</distribute>
@@ -669,7 +670,7 @@
     </step>
 
   <step>
-    <name>Block this step until steps finish 2</name>
+    <name>EsperarGeneros</name>
     <type>BlockUntilStepsFinish</type>
     <description/>
     <distribute>Y</distribute>
@@ -776,6 +777,31 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>240</xloc>
       <yloc>256</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>EsperarGeneros 2</name>
+    <type>BlockUntilStepsFinish</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <steps>
+      <step>
+        <name>GenerosPelicula</name>
+        <CopyNr>0</CopyNr>
+        </step>
+      </steps>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>512</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
