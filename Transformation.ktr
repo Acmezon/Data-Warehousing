@@ -358,7 +358,7 @@
 
          <mongo_doc_path>id_film</mongo_doc_path>
 
-         <use_incoming_field_name_as_mongo_field_name>Y</use_incoming_field_name_as_mongo_field_name>
+         <use_incoming_field_name_as_mongo_field_name>N</use_incoming_field_name_as_mongo_field_name>
 
          <update_match_field>N</update_match_field>
 
@@ -374,7 +374,7 @@
 
          <mongo_doc_path>id_genre</mongo_doc_path>
 
-         <use_incoming_field_name_as_mongo_field_name>Y</use_incoming_field_name_as_mongo_field_name>
+         <use_incoming_field_name_as_mongo_field_name>N</use_incoming_field_name_as_mongo_field_name>
 
          <update_match_field>N</update_match_field>
 
