@@ -384,7 +384,7 @@
            </partitioning>
     <connection>RecommenderDB</connection>
     <sql>SELECT id_item, movie_title, imdb_url FROM Films&#x3b;</sql>
-    <limit>30</limit>
+    <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>

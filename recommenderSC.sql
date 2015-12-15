@@ -1,11 +1,6 @@
 DROP database if exists `recommenderSC`;
 CREATE database if not exists `recommenderSC`;
 
-DROP TABLE IF EXISTS recommenderSC.`FilmFact`;
-DROP TABLE IF EXISTS recommenderSC.`Genre`;
-DROP TABLE IF EXISTS recommenderSC.`Film`;
-DROP TABLE IF EXISTS recommenderSC.`Actor`;
-
 CREATE TABLE recommenderSC.`Genre` (
 	id_genre int NOT NULL,
     name varchar(255) NOT NULL,
@@ -32,6 +27,7 @@ CREATE TABLE recommenderSC.`FilmFact`(
     id_genre int NOT NULL,
     rating int,
     rating_age int,
+    rating_moment bigint(20),
     primary key(ID, id_film, id_actor, id_genre),
     foreign key(id_film)
 		references recommenderSC.`Film`(id_film)
