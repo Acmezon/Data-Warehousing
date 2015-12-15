@@ -1,3 +1,4 @@
+DROP database if exists `recommenderSC`;
 CREATE database if not exists `recommenderSC`;
 
 DROP TABLE IF EXISTS recommenderSC.`FilmFact`;
