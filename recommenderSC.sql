@@ -18,7 +18,7 @@ CREATE TABLE recommenderSC.`Film`(
 );
 
 CREATE TABLE recommenderSC.`Actor`(
-	id_actor int NOT NULL,
+	id_actor int auto_increment,
     name varchar(255) NOT NULL,
     primary key(id_actor)
 );
