@@ -5,8 +5,6 @@ DROP TABLE IF EXISTS recommenderSC.`Genre`;
 DROP TABLE IF EXISTS recommenderSC.`Film`;
 DROP TABLE IF EXISTS recommenderSC.`Actor`;
 
-DROP TRIGGER IF EXISTS calculate_rating;
-
 CREATE TABLE recommenderSC.`Genre` (
 	id_genre int NOT NULL,
     name varchar(255) NOT NULL,
@@ -43,13 +41,3 @@ CREATE TABLE recommenderSC.`FilmFact`(
 		references recommenderSC.`Genre`(id_genre)
         ON DELETE CASCADE
 );
-
-DELIMITER $$
-
-CREATE TRIGGER calculate_rating AFTER INSERT ON recommenderSC.`Rating`
-FOR EACH ROW 
-BEGIN    
-	UPDATE recommenderSC.`FilmFact` SET total_rating = total_rating + inserted.rating WHERE id_rating = inserted.id_rating;
-END; $$
-
-DELIMITER ;
