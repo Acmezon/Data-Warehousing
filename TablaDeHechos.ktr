@@ -69,7 +69,7 @@
   <created_date>2015&#x2f;12&#x2f;15 16&#x3a;11&#x3a;46.484</created_date>
   <modified_user>-</modified_user>
   <modified_date>2015&#x2f;12&#x2f;15 16&#x3a;11&#x3a;46.484</modified_date>
-    <key_for_session_key/>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -135,32 +135,6 @@
   <hop> <from>Valoraciones</from><to>GuardarHecho</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>TomarPeliculas</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>RecommenderSC</connection>
-    <sql>SELECT id_film FROM Film&#x3b;</sql>
-    <limit>30</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>368</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>Actores</name>
     <type>DBJoin</type>
     <description/>
@@ -221,36 +195,6 @@
     </step>
 
   <step>
-    <name>Valoraciones</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Recommender</connection>
-    <rowlimit>0</rowlimit>
-    <sql>SELECT rating, age FROM Ratings INNER JOIN Users ON Ratings.id_user &#x3d; Users.id_user WHERE id_film &#x3d; &#x3f;&#x3b;</sql>
-    <outer_join>N</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>id_film</name>
-        <type>Integer</type>
-      </field>
-    </parameter>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>368</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>GuardarHecho</name>
     <type>ExecSQL</type>
     <description/>
@@ -266,7 +210,7 @@
     <single_statement>N</single_statement>
     <replace_variables>N</replace_variables>
     <quoteString>Y</quoteString>
-    <sql>INSERT INTO FilmFact VALUES&#x28;NULL, &#x3f;, &#x3f;, &#x3f;, &#x3f;, &#x3f;&#x29;&#x3b;</sql>
+    <sql>INSERT INTO FilmFact VALUES&#x28;NULL, &#x3f;, &#x3f;, &#x3f;, &#x3f;, &#x3f;, &#x3f;&#x29;&#x3b;</sql>
     <set_params>N</set_params>
     <insert_field/>
     <update_field/>
@@ -278,10 +222,67 @@
        <argument><name>id_gender</name></argument>
        <argument><name>rating</name></argument>
        <argument><name>age</name></argument>
+       <argument><name>momentum</name></argument>
     </arguments>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>512</xloc>
+      <yloc>432</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>TomarPeliculas</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>RecommenderSC</connection>
+    <sql>SELECT id_film FROM Film&#x3b;</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>368</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Valoraciones</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Recommender</connection>
+    <rowlimit>0</rowlimit>
+    <sql>SELECT rating, age, momentum FROM Ratings INNER JOIN Users ON Ratings.id_user &#x3d; Users.id_user WHERE id_film &#x3d; &#x3f;&#x3b;</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>id_film</name>
+        <type>Integer</type>
+      </field>
+    </parameter>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>368</xloc>
       <yloc>432</yloc>
       <draw>Y</draw>
       </GUI>
